@@ -20,7 +20,7 @@ var Comarik = function(){
      },500)
    }
    function expl(){
-     point.style.backgroundImage="url(http://bestanimations.com/Military/Explosions/explosion-animation-1.gif)"
+      point.style.backgroundImage="url(http://bestanimations.com/Military/Explosions/explosion-animation-1.gif)"
    }
    this.point.onclick = function(event){
      expl()
@@ -29,15 +29,15 @@ var Comarik = function(){
    //this.timeout = setTimeout(delComarik(),1000)
 }
 var insects = []
-for(var i = 0; i<10;i++){
+for(var i = 0; i<11;i++){
    insects[i]=new Comarik()
 }
-var int = Math.round(Math.random()+0.2)
+var int = Math.round(Math.random()+0.9)
 insects.forEach(function(x){
   setInterval (function(){
            x.point.style.transition = "all " + int + "s"
            x.fly()
-   },int * 1000)
+   },int * 1500)
 })
 
 var btn = document.createElement('button')
