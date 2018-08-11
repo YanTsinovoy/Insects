@@ -26,18 +26,17 @@ var Comarik = function(){
      expl()
      delComarik()
    }
-   //this.timeout = setTimeout(delComarik(),1000)
 }
 var insects = []
 for(var i = 0; i<11;i++){
    insects[i]=new Comarik()
 }
-var int = Math.round(Math.random()+0.9)
+var int = Math.round(Math.random()+0.7)
 insects.forEach(function(x){
   setInterval (function(){
            x.point.style.transition = "all " + int + "s"
            x.fly()
-   },int * 1500)
+   },int * 1200)
 })
 
 var btn = document.createElement('button')
@@ -67,10 +66,8 @@ btn.onclick = function(event){
   }
   setTimeout(function(){
     for(elem of insects){
-     elem.point.parentNode.removeChild(elem.point)
-       console.log(elem.point)
+   if(elem.point.parentNode!==null)elem.point.parentNode.removeChild(elem.point)
      }
   },500) 
-  document.body.style.backgroundColor="black"
-  
+  document.body.style.backgroundColor="black" 
 }

@@ -8,7 +8,7 @@
 	background-position: center center;
 }
 body {
-  cursor: crosshair;
+    cursor: url('images/aimRed.cur'), auto;
 	background-color: white;
 	color:white;
 	font-family: 'Righteous', cursive;
