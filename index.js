@@ -28,21 +28,26 @@ var Comarik = function(){
    }
 }
 var insects = []
-for(var i = 0; i<11;i++){
-   insects[i]=new Comarik()
-}
-var int = Math.round(Math.random()+0.7)
-insects.forEach(function(x){
-  setInterval (function(){
+function CreateInsects(){
+  if(insects.length === 0){
+    for(var i = 0; i<11;i++){
+       insects[i]=new Comarik()
+    }
+  }
+  var int = Math.round(Math.random()+0.7)
+  insects.forEach(function(x){
+     setInterval (function(){
            x.point.style.transition = "all " + int + "s"
            x.fly()
-   },int * 1200)
-})
+     },int * 1200)
+  })
+}
+(CreateInsects())
 
 var btn = document.createElement('button')
 btn.className = 'button'
 btn.innerHTML = "Clear"
-btn.style.margin = "10%"
+btn.style.margin = "5%"
 document.body.appendChild(btn)
 
 var Smoke = function(){
@@ -70,4 +75,32 @@ btn.onclick = function(event){
      }
   },500) 
   document.body.style.backgroundColor="black" 
+  setTimeout(function(){
+    insects = []
+  },600)
+}
+
+var btnRes = document.createElement("button")
+btnRes.className = 'button'
+btnRes.innerHTML = 'Restart'
+btnRes.style.margin = "5%"
+document.body.appendChild(btnRes)
+
+btnRes.onclick = function(event){
+  var comarikForRestartUndoClear = []
+  for(elem of smokes){
+    if(elem.smoke.parentNode!==null)elem.smoke.parentNode.removeChild(elem.smoke)
+  }
+  document.body.style.backgroundColor="white"
+  smokes = []
+  smokesForDel = []
+  for(elem of insects){
+    if(elem.point.parentNode!==null){
+      comarikForRestartUndoClear.push(elem.point)
+    }
+  }
+  if(comarikForRestartUndoClear.length === 0){
+    insects = []
+    CreateInsects()
+  }
 }
