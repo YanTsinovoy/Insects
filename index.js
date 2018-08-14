@@ -1,4 +1,5 @@
 var smokesForDel = []
+var comarMeter = []
 var Comarik = function(){
    this.point = document.createElement ( 'div' )
    this.point.className = 'point'
@@ -16,7 +17,9 @@ var Comarik = function(){
    
    function delComarik(){
      setTimeout(function(){
+       comarMeter.push(point)
        point.parentNode.removeChild(point)
+       killMeter()
      },500)
    }
    function expl(){
@@ -78,6 +81,8 @@ btn.onclick = function(event){
   setTimeout(function(){
     insects = []
   },600)
+  comarMeter = []
+  document.demo.innerHTML = "0"
 }
 
 var btnRes = document.createElement("button")
@@ -103,4 +108,10 @@ btnRes.onclick = function(event){
     insects = []
     CreateInsects()
   }
+  console.log(comarikForRestartUndoClear)
+}
+document.demo = document.getElementById("demo")
+document.demo.innerHTML = "0"
+function killMeter(){
+  document.demo.innerHTML = (comarMeter.length)+""
 }

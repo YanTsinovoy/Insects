@@ -18,15 +18,16 @@ body {
 	font-size: 10px;
 	text-align:right;
 }
-nav {
-	position:fixed;
-	bottom:0;
-	right:0;
-}
-nav > #demo {
-	display: inline-block;
+p {
+    display: absolute;
 	color: red;
-	font-weight: bold;
+    border: 2px dotted #a80606;
+    width:5%;
+	height:3%;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size:250%;
+    padding-left:1%;
+    padding-right:1%; 
 }
 .button {
   display: inline-block;
