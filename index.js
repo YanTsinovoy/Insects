@@ -1,48 +1,50 @@
 var smokesForDel = []
 var comarMeter = []
 var Comarik = function(){
-   this.point = document.createElement ( 'div' )
-   this.point.className = 'point'
-   this.point.style.transition = "all 1s"
-   document.body.appendChild ( this.point )
-   this.fly= function(){
-      this.point.x=Math.round(Math.random()*window.innerWidth)
-      this.point.y=Math.round(Math.random()*window.innerHeight)
-      this.point.style.left = this.point.x + 'px'
-      this.point.style.top =  this.point.y + 'px'
+  this.point = document.createElement ( 'div' )
+  this.point.className = 'point'
+  this.point.style.transition = "all 1s"
+  document.body.appendChild ( this.point )
+  this.fly= function(){
+    this.point.x=Math.round(Math.random()*window.innerWidth)
+    this.point.y=Math.round(Math.random()*window.innerHeight)
+    this.point.style.left = this.point.x + 'px'
+    this.point.style.top =  this.point.y + 'px'
    
-   }
-   this.fly()
-   var point = this.point
+  }
+  this.fly()
+  var point = this.point
    
-   function delComarik(){
-     setTimeout(function(){
-       comarMeter.push(point)
-       point.parentNode.removeChild(point)
-       killMeter()
-     },500)
-   }
-   function expl(){
-      point.style.backgroundImage="url(http://bestanimations.com/Military/Explosions/explosion-animation-1.gif)"
-   }
-   this.point.onclick = function(event){
-     expl()
-     delComarik()
-   }
+  function delComarik(){
+    setTimeout(function(){
+      comarMeter.push(point)
+      point.parentNode.removeChild(point)
+      killMeter()
+    },500)
+  }
+  function expl(){
+    point.style.backgroundImage="url(http://bestanimations.com/Military/Explosions/explosion-animation-1.gif)"
+  }
+  this.point.onclick = function(event){
+    expl()
+    delComarik()
+  }
+
+  
 }
 var insects = []
 function CreateInsects(){
   if(insects.length === 0){
     for(var i = 0; i<11;i++){
-       insects[i]=new Comarik()
+      insects[i]=new Comarik()
     }
   }
   var int = Math.round(Math.random()+0.7)
   insects.forEach(function(x){
-     setInterval (function(){
-           x.point.style.transition = "all " + int + "s"
-           x.fly()
-     },int * 1200)
+    setInterval (function(){
+      x.point.style.transition = "all " + int + "s"
+      x.fly()
+    },int * 1200)
   })
 }
 (CreateInsects())
@@ -65,17 +67,17 @@ var Smoke = function(){
 var smokes = []
 btn.onclick = function(event){
   if (smokesForDel.length!==2){
-      for(var i=0;i<2;i++){
-        smokes[i]= new Smoke()
-      }
+    for(var i=0;i<2;i++){
+      smokes[i]= new Smoke()
+    }
   }
   for (var i=0;i<insects.length;i++){
     insects[i].point.style.backgroundImage = "url(http://static.wixstatic.com/media/dcd199_f1e940a65f034490b39a2e216b1549ff.gif)"
   }
   setTimeout(function(){
     for(elem of insects){
-   if(elem.point.parentNode!==null)elem.point.parentNode.removeChild(elem.point)
-     }
+      if(elem.point.parentNode!==null)elem.point.parentNode.removeChild(elem.point)
+    }
   },500) 
   document.body.style.backgroundColor="black" 
   setTimeout(function(){
@@ -115,3 +117,35 @@ document.demo.innerHTML = "0"
 function killMeter(){
   document.demo.innerHTML = (comarMeter.length)+""
 }
+
+var b = document.querySelector('body')
+var inp = document.querySelector('input')
+inp.onchange = function(event){
+  if(this.checked){
+    b.style.cursor = "url('images/Sniper64.cur'), auto"
+    setScaleForComar()
+  } else {
+    b.style.cursor = "url('images/aimRed.cur'), auto"
+    nullScaleForComar ()
+  }
+}
+
+function setScaleForComar (){
+  for(var insect of insects){
+    console.log(insect.point)
+    insect.point.onmouseenter = function(event){
+      this.style.transform = "scale(1.5)"
+    }
+    insect.point.onmouseleave = function(event){
+      this.style.transform = "scale(1)"
+    }
+  }
+}
+
+function nullScaleForComar (){
+  for(var insect of insects){
+    insect.point.onmouseenter = null
+    insect.point.onmouseleave = null
+  }
+}
+

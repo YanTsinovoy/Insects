@@ -8,7 +8,7 @@
 	background-position: center center;
 }
 body {
-    cursor: url('images/aimRed.cur'), auto;
+  cursor: url('images/aimRed.cur'), auto;
 	background-color: white;
 	color:white;
 	font-family: 'Righteous', cursive;
@@ -19,15 +19,15 @@ body {
 	text-align:right;
 }
 p {
-    display: absolute;
+  display: absolute;
 	color: red;
-    border: 2px dotted #a80606;
-    width:5%;
+  border: 2px dotted #a80606;
+  width:5%;
 	height:3%;
-    font-family: 'Do Hyeon', sans-serif;
-    font-size:250%;
-    padding-left:1%;
-    padding-right:1%; 
+  font-family: 'Do Hyeon', sans-serif;
+  font-size:250%;
+  padding-left:1%;
+  padding-right:1%; 
 }
 .button {
   display: inline-block;
@@ -56,4 +56,10 @@ p {
 .smoke{
   margin-right:-25%;
   width:100%
+}
+.cont {
+  position:fixed;
+  top:10%;
+  left:2%;
+  background-color:white;
 }
