@@ -120,6 +120,8 @@ function killMeter(){
 
 var b = document.querySelector('body')
 var inp = document.querySelector('input')
+var imageInp = document.querySelector('img')
+imageInp.src = "images/SniperS64.png"
 inp.onchange = function(event){
   if(this.checked){
     b.style.cursor = "url('images/Sniper64.cur'), auto"
